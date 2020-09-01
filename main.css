@@ -1,4 +1,32 @@
+body {
+    font-family: Tahoma, Geneva, sans-serif;
+    padding: 15px;
+} 
+
 h1 {
-    padding: 22px;
-    align-content: center;
+    border-radius: 20px;
+    
+}
+
+label {
+    font-size: x-large;
+    border-radius: 20px;
+}
+
+.form-group {
+    border-radius: 20px;
+}
+
+.btn {
+    font-weight: bold;
+    border-radius: 20em;
+}
+
+.col-md-8 {
+    float: center;
+}
+
+.card {
+    padding: 10px;
+    margin: 10px;
 }
