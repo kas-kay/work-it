@@ -1,2 +1,2 @@
 # work-it
-A place to host our App Runner project 
+A place to host our task runner project 
