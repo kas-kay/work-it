@@ -1,31 +1,31 @@
-var add_button = document.getElementById('add-button');
-var del_buttons = document.getElementsByClassName('delete'); 
-var task_container = document.querySelector('.tasks-container');
-var task_input = document.getElementById('new-task')
-var completeAll = document.getElementById('check-all-button');
-var clearComplete = document.getElementById('clearComplete');
-var showAll = document.getElementById('showAll');
-var showComplete = document.getElementById('showComplete');
-var showNotStarted = document.getElementById('showNotStarted');
-var showState = 'showAll';
+let add_button = document.getElementById('add-button');
+let del_buttons = document.getElementsByClassName('delete'); 
+let task_container = document.querySelector('.tasks-container');
+let task_input = document.getElementById('new-task')
+let completeAll = document.getElementById('check-all-button');
+let clearComplete = document.getElementById('clearComplete');
+let showAll = document.getElementById('showAll');
+let showComplete = document.getElementById('showComplete');
+let showNotStarted = document.getElementById('showNotStarted');
+let showState = 'showAll';
 showAll.style.color="Black";
 
 
-var task_card_string = "<div class=\"status-icon\"></div><p class=\"task-text\"><p class=\"task-status color-red\">Not-Started</p><ion-icon class=\"delete fs-large mg-10\" name=\"circle-outline\"></ion-icon>"
-var task_count = 5;
+let task_card_string = "<div class=\"status-icon\"></div><p class=\"task-text\"><p class=\"task-status color-red\">Not-Started</p><ion-icon class=\"delete fs-large mg-10\" name=\"circle-outline\"></ion-icon>"
+let task_count = 5;
 eventSetter();
 
 
 function eventSetter(){
-    var del_buttons = document.getElementsByClassName('delete'); 
+    let del_buttons = document.getElementsByClassName('delete'); 
     for(del of del_buttons){
         del.addEventListener('click',removeCard);
     }
-    var progress_buttons = document.getElementsByClassName('status-icon');
+    let progress_buttons = document.getElementsByClassName('status-icon');
     for(p of progress_buttons){
         p.addEventListener('click', changeProgress);
     }
-    var cards = document.getElementsByClassName('task-card');
+    let cards = document.getElementsByClassName('task-card');
     console.log(cards);
     for(let i=0;i<cards.length;i++){
         console.log(cards[i]);
@@ -42,8 +42,8 @@ function eventSetter(){
 }
 
 function reassignIDs(){
-    var cards = document.getElementsByClassName('task-card');
-    var count=1;
+    let cards = document.getElementsByClassName('task-card');
+    let count=1;
     for(card of cards){
         card.setAttribute("id", "t"+(count++));
         card.eve
@@ -51,7 +51,7 @@ function reassignIDs(){
 }
 
 function resetColor(){
-    var allButtons = document.getElementsByClassName('filter-button');
+    let allButtons = document.getElementsByClassName('filter-button');
     for(button of allButtons)
         button.style.color = "gray";
 }
@@ -62,7 +62,7 @@ add_button.addEventListener('click', function(){
         alert("Please enter a new task!");
     } 
     else {  
-    var task_card = document.createElement('div');
+    let task_card = document.createElement('div');
     task_card.innerHTML= task_card_string
     task_card.setAttribute("class", "task-card not-started");
     task_card.setAttribute("id", "t"+(++task_count));
@@ -77,7 +77,7 @@ add_button.addEventListener('click', function(){
 
 
 function removeCard(){
-    var parent = this.parentElement;
+    let parent = this.parentElement;
     parent.classList.add('delete-card');
     setTimeout(function(){
         parent.parentNode.removeChild(parent);
@@ -87,10 +87,10 @@ function removeCard(){
 }
 
 function changeProgress(){
-    var parentCard = this.parentElement;
-    var status = parentCard.classList[1];
+    let parentCard = this.parentElement;
+    let status = parentCard.classList[1];
     parentCard.classList.remove(status);
-    var statusElem = parentCard.children[2];
+    let statusElem = parentCard.children[2];
    
     if(status == 'not-started'){
         parentCard.classList.add('Completed');
@@ -114,12 +114,12 @@ function changeProgress(){
 }
 
 completeAll.addEventListener('click', function(){
-    var progress_buttons = document.getElementsByClassName('status-icon');
+    let progress_buttons = document.getElementsByClassName('status-icon');
     for(p of progress_buttons){
-        var parentCard = p.parentElement;
-        var status = parentCard.classList[1];
+        let parentCard = p.parentElement;
+        let status = parentCard.classList[1];
         parentCard.classList.remove(status);
-        var statusElem = parentCard.children[2];
+        let statusElem = parentCard.children[2];
         parentCard.classList.remove(status);
         parentCard.classList.add("Completed");
         statusElem.innerHTML="Completed";
@@ -129,6 +129,7 @@ completeAll.addEventListener('click', function(){
 });
 
 clearComplete.addEventListener('click', function(){
+    
     let cards = document.getElementsByClassName('Completed');
     let parent = cards[0].parentElement;
     let length = cards.length;
@@ -152,7 +153,7 @@ showAll.addEventListener('click',function(){
     if(showState !='showAll'){
         resetColor();
         this.style.color="black";
-        var allCards = document.getElementsByClassName('task-card');
+        let allCards = document.getElementsByClassName('task-card');
         for(card of allCards){
             card.style.display = "flex";
         }
@@ -167,7 +168,7 @@ showComplete.addEventListener('click',function(){
     if(showState !='showComplete'){
         resetColor();
         this.style.color="black";
-        var allCards = document.getElementsByClassName('task-card');
+        let allCards = document.getElementsByClassName('task-card');
         for(card of allCards){
             if(card.classList[1]!='Completed')
                 card.style.display = "none";
@@ -184,7 +185,7 @@ showNotStarted.addEventListener('click',function(){
     if(showState !='showNotStarted'){
         resetColor();
         this.style.color="black";
-        var allCards = document.getElementsByClassName('task-card');
+        let allCards = document.getElementsByClassName('task-card');
 
         for(card of allCards){
             if(card.classList[1]!='not-started')
